@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   <data>
+        <record id="view_stock_move_detail" model="ir.ui.view">
+            <field name="name">Stock Move Details</field>
+            <field name="model">stock.move.detail</field>
+            <field name="arch" type="xml">
+                <tree >
+                    <field name="product_id" invisible="0" readonly="1"/>
+                    <field name="date" groups="base.group_no_one" decoration-danger="(state not in ('cancel','done')) and date &gt; current_date"/>
+                    <field name="begin_qty" invisible="0" readonly="1"/>
+                    <field name="purchased" invisible="0" readonly="1"/>
+                    <field name="manufactured" invisible="0" readonly="1"/>
+                    <field name="senttoproduction" invisible="0" readonly="1"/>
+                    <field name="scrap" invisible="0" readonly="1"/>
+                    <field name="adjustement" invisible="0" readonly="1"/>
+                    <field name="transfered" invisible="0" readonly="1"/>
+                    <field name="sold" invisible="0" readonly="1"/>
+                    <field name="end_qty" invisible="0" readonly="1"/>
+
+                    <field name="reference"/>
+                    <field name="picking_type_id" invisible="1" optional="hide" />
+                    <field name="location_id"  options="{'no_create': True}"  optional="hide" string="From"/>
+                    <field name="location_dest_id" options="{'no_create': True}"  optional="hide" string="To"/>
+                    <field name="product_packaging_id" optional="hide" groups="product.group_stock_packaging"/>
+                    <field name="product_uom" options="{'no_open': True, 'no_create': True}"  optional="hide" string="Unit of Measure" groups="uom.group_uom"/>
+                    <field name="company_id" groups="base.group_multi_company"  optional="hide" />
+                    <field name="state" widget="badge" decoration-success="state == 'done'" decoration-info="state not in ('done', 'cancel')"/>
+                </tree>
+            </field>
+        </record>
+       <record id="stock_detail_search" model="ir.ui.view">
+            <field name="name">Stock Move Details</field>
+            <field name="model">stock.move.detail</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="location_id" string="Location" filter_domain="['|','|','|', ('location_id', 'ilike', self), ('location_dest_id', 'ilike', self), ('location_id.location_id', 'ilike', self), ('location_dest_id.location_id.name', 'ilike', self)]"/>
+                    <field name="warehouse_id" string="Warehouse" filter_domain="['|', ('location_id.warehouse_id', 'ilike', self), ('location_dest_id.warehouse_id', 'ilike', self)]"/>
+                    <field name="product_id"/>
+                    <filter name="group_by_name_detail" string="Group By Product Name" context="{'group_by':'product_id'}"/>
+                </search>
+            </field>
+        </record>
+        <record id="view_stock_detail_tree_config" model="ir.actions.act_window">
+            <field name="name">Stock Move Details</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">stock.move.detail</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_stock_move_detail"/>
+            <field name="search_view_id" ref="stock_detail_search"/>
+            <field name="context">{'search_default_group_by_name_detail': 1}
+            </field>
+        </record>
+        <menuitem id="menu_Stock_Move_detail"
+                  name="Stock Move Details"
+                  parent="stock.menu_warehouse_report"
+                  sequence="249"
+                  action="view_stock_detail_tree_config"/>
+   </data>
+</odoo>

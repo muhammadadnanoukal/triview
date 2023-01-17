@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+stock_move_in_out,stock.move.in.out,model_stock_move_in_out,base.group_user,1,0,0,0
+

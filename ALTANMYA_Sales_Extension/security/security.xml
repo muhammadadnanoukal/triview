@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="module_altanmya_sales_extension" model="ir.module.category">
+        <field name="name">Altanmya Sales Extension</field>
+        <field name="description">Helps you manage Sales module extension.</field>
+        <field name="sequence">10</field>
+    </record>
+     <record model="res.groups" id="altanmya_sales_stage_type">
+         <field name="name">Sale order change type</field>
+         <field name="category_id" ref="module_altanmya_sales_extension" />
+     </record>
+
+</odoo>

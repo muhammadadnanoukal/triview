@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+tanmya_sale_stage_type,tanmya.sale.stage.type,model_tanmya_sale_stage_type,base.group_user,1,1,1,1
+tanmya_sale_stage,tanmya.sale.stage,model_tanmya_sale_stage,base.group_user,1,1,1,1
+tanmya_sale_order_pending,tanmya.sale.order.pending,model_tanmya_sale_order_pending,base.group_user,1,1,1,1
+
