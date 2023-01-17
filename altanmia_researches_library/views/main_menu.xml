@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<odoo>
+        <!-- Top menu item -->
+        <menuitem id="library_menu_root"
+            name="Researches Library"
+            web_icon="altanmia_researches_library,static/description/icon.png"
+            sequence="0"/>
+
+        <!--Show Research list menu item-->
+        <menuitem id="researches_show"
+                  name="Library"
+                  action="altanmia_researches_library.researches_action"
+                  parent="library_menu_root"
+                  sequence="1"/>
+                  
+
+        <!--Show Resources list menu item-->
+        <menuitem id="unversities_show"
+                  name="Universities"
+                  action="altanmia_researches_library.action_university_show"
+                  parent="library_menu_root"
+                  sequence="2"/>
+
+
+</odoo>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="web_menu_researches" model="website.menu">
+            <field name="name">Researches Library</field>
+            <field name="url">/researches</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence">55</field>
+        </record>
+    </data>
+</odoo>
